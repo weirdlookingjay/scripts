@@ -1,0 +1,2 @@
+cmd.exe /C setx WSLENV BASH_ENV/u
+cmd.exe /C setx BASH_ENV /etc/bash.bashrc
