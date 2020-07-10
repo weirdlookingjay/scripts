@@ -1,0 +1,21 @@
+server {                                                          
+        listen 80 default_server;                                 
+        listen [::]:80 default_server;                            
+                                                                  
+        root /var/www/wordpress.com/public_html;                                       
+                                                                  
+        # Add index.php to the list if you are using PHP          
+        index index.php;       
+                                                                  
+        server_name wordpress.com www.wordpress.com;                                            
+                                                                  
+        location / {                                              
+                try_files $uri $uri/ /index.php?$args;                        
+        }                                                         
+                                                                  
+        location ~ \.php$ {                                       
+                include snippets/fastcgi-php.conf;                
+                fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;   
+        }                                                         
+                                                                  
+}
